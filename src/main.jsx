@@ -8,6 +8,7 @@ import './index.css'
 import ErrorPage from './Pages/ErrorPage.jsx';
 import Root from './layout/Root.jsx';
 import Home from './Pages/Home.jsx';
+import SignUp from './Pages/SignUp.jsx';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
       {
         path:'/',
         element: <Home></Home>
+      },
+      {
+        path: '/signUp',
+        element: <SignUp></SignUp>
       }
     ]
   },
