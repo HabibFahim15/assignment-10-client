@@ -11,6 +11,9 @@ import Home from './Pages/Home.jsx';
 import SignUp from './Pages/SignUp.jsx';
 import SignIn from './Pages/SignIn.jsx';
 import AddTouristSpot from './Pages/AddTouristSpot.jsx';
+import AllSpotList from './Pages/AllSpotList.jsx';
+import MyList from './Pages/MyList.jsx';
+import AuthProvider from './Providers/AuthProvider.jsx';
 
 const router = createBrowserRouter([
   {
@@ -33,6 +36,14 @@ const router = createBrowserRouter([
       {
         path: 'addTouristSpot',
         element: <AddTouristSpot></AddTouristSpot>
+      },
+      {
+        path: 'touristsSpot',
+        element:<AllSpotList></AllSpotList>
+      },
+      {
+        path: 'myList',
+        element: <MyList></MyList>
       }
     ]
   },
@@ -40,6 +51,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+    <AuthProvider>
     <RouterProvider router={router} />
+    </AuthProvider>
   </React.StrictMode>,
 )
