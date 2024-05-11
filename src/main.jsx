@@ -14,6 +14,7 @@ import AddTouristSpot from './Pages/AddTouristSpot.jsx';
 import AllSpotList from './Pages/AllSpotList.jsx';
 import MyList from './Pages/MyList.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
+import UpdateAdd from './Pages/UpdateAdd.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,13 +39,18 @@ const router = createBrowserRouter([
         element: <AddTouristSpot></AddTouristSpot>
       },
       {
-        path: 'touristsSpot',
+        path: 'updateTour',
+        element: <UpdateAdd></UpdateAdd>
+      },
+      {
+        path: 'touristSpot',
         element:<AllSpotList></AllSpotList>
       },
       {
         path: 'myList',
         element: <MyList></MyList>
       }
+      
     ]
   },
 ]);
