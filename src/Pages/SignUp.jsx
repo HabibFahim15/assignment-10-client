@@ -133,15 +133,15 @@ const SignUp = () => {
                 </TERipple>
 
                 {/* <!-- Register link --> */}
-                <Link to={'/signUp'} className="mb-0 mt-2 pt-1 ml-2 text-sm font-semibold">
+                <p className="mb-0 mt-2 pt-1 text-sm font-semibold">
                   Have an account?{" "}
-                  <a
+                  <Link to={'/signIn'}><a
                     href="#!"
                     className="text-danger transition duration-150 ease-in-out hover:text-danger-600 focus:text-danger-600 active:text-danger-700"
                   >
                     Login
-                  </a>
-                </Link>
+                  </a></Link>
+                </p>
               </div>
             </form>
           </div>

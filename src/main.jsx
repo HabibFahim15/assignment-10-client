@@ -9,6 +9,8 @@ import ErrorPage from './Pages/ErrorPage.jsx';
 import Root from './layout/Root.jsx';
 import Home from './Pages/Home.jsx';
 import SignUp from './Pages/SignUp.jsx';
+import SignIn from './Pages/SignIn.jsx';
+import AddTouristSpot from './Pages/AddTouristSpot.jsx';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ const router = createBrowserRouter([
       {
         path: '/signUp',
         element: <SignUp></SignUp>
+      },
+      {
+        path: '/signIn',
+        element: <SignIn></SignIn>
+      },
+      {
+        path: 'addTouristSpot',
+        element: <AddTouristSpot></AddTouristSpot>
       }
     ]
   },
