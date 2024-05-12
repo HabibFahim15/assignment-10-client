@@ -21,7 +21,7 @@ const Navbar = () => {
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-normal md:text-base">
      <li><Link to={'/'}>Home</Link></li>
-        <li><Link to={'/touristsSpot'}> All Tourists Spot</Link></li>
+        <li><Link to={'/touristSpot'}> All Tourists Spot</Link></li>
         <li><Link to={'/addTouristSpot'}>Add Tourists Spot</Link></li>
         <li><Link to={'/myList'}>My List</Link></li>
       

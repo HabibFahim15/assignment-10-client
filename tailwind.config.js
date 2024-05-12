@@ -10,7 +10,8 @@ export default {
   },
   plugins: [
     require('daisyui'),
-    require("tw-elements-react/dist/plugin.cjs")
+    require("tw-elements-react/dist/plugin.cjs"),
+    require("tailwindcss-animate"),
   ],
 }
 
