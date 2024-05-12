@@ -39,7 +39,7 @@ const SignUp = () => {
         console.log(result);
         Toast.fire({
           icon: "success",
-          title: "Signed in successfully"
+          title: "Account Created successfully"
         });
       })
       .catch(error => {

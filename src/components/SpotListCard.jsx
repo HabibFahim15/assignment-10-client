@@ -59,7 +59,7 @@ const SpotListCard = ({addedSpot, addedSpots, setSpots}) => {
                     <h3 className="text-md font-semibold text-black mb-2">Created by: {name}</h3>
                  </div>
                  <div className="grid grid-cols-1 gap-4">
-                 <button className="btn btn-info text-white">Info</button>
+                 <Link to={`/touristSpot/${_id}`} className="btn btn-info text-white">Info</Link>
                  <Link to={`/updateTour/${_id}`} className="btn btn-warning text-white">Edit</Link>
                       <button
                       onClick={() => handleDelete(_id)}

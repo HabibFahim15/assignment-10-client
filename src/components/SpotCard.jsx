@@ -2,10 +2,11 @@ import { HiLocationMarker } from "react-icons/hi";
 import { TbCoinTakaFilled } from "react-icons/tb";
 import { MdCoPresent,MdOutlineEmail  } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const SpotCard = ({ spotList }) => {
 
-  const { spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = spotList;
+  const { _id,spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = spotList;
 
   return (
     <div className="max-w-lg p-4 shadow-md bg-gray-50 text-gray-800 flex flex-col justify-between h-full">
@@ -45,7 +46,7 @@ const SpotCard = ({ spotList }) => {
       </div>
     </div>
   </div>
-  <button className="btn bg-purple-600 text-white font-semibold w-full mt-auto">View Details</button>
+  <Link to={`/touristSpot/${_id}`} className="btn bg-purple-600 text-white font-semibold w-full mt-auto">View Details</Link>
 </div>
   );
 };
