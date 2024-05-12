@@ -1,42 +1,42 @@
 import { createContext, useEffect, useState } from "react";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile,  } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 const auth = getAuth(app);
 
 export const AuthContext = createContext(null);
 
-const AuthProvider = ( {children} ) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true)
   const [showPassword, setShowPassword] = useState(false)
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
+  
 
   const createUser = async (name, image, email, password) => {
     try {
-        setLoading(true);
-        // Create user with email and password
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        
-        // Get the newly created user
-        const user = userCredential.user;
+      setLoading(true);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
 
-        // Update the user profile with name and image
-        await updateProfile(user, {
-            displayName: name,
-            photoURL: image
-        });
 
-        setLoading(false); // You might want to set loading to false here or handle it as needed
-        return user;
+      const user = userCredential.user;
+
+      // Update the user profile with name and image
+      await updateProfile(user, {
+        displayName: name,
+        photoURL: image
+      });
+
+      setLoading(false);
+      return user;
     } catch (error) {
-        setLoading(false); // Make sure to set loading to false in case of error
-        // Handle error
-        console.error("Error creating user:", error.message);
-        throw error;
+      setLoading(false);
+      // Handle error
+      console.error("Error creating user:", error.message);
+      throw error;
     }
-}
+  }
 
 
   //sign in
@@ -46,10 +46,11 @@ const AuthProvider = ( {children} ) => {
   };
 
   const googleLogin = () => {
-    return signInWithPopup(auth, googleProvider);
+    return signInWithPopup(auth, googleProvider)
+      
   };
 
-  const githubLogin =() =>{
+  const githubLogin = () => {
     return signInWithPopup(auth, githubProvider)
   }
 
@@ -59,17 +60,17 @@ const AuthProvider = ( {children} ) => {
   };
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, currenUser =>{
+    const unSubscribe = onAuthStateChanged(auth, currenUser => {
       console.log('current value of the current user');
       setUser(currenUser);
-      setLoading(false)
+      setLoading(false);
     })
-    return ()=> {
+    return () => {
       unSubscribe();
     };
-  },[])
+  }, [])
 
-  const userInfo ={
+  const userInfo = {
     user,
     loading,
     showPassword,

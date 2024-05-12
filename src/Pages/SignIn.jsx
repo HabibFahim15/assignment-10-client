@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -20,8 +20,9 @@ const Toast = Swal.mixin({
 });
 
 const SignIn = () => {
-  const { showPassword, setShowPassword,  logIn, googleLogin, githubLogin, } = useContext(AuthContext);
-
+  const { showPassword, setUser, setShowPassword,  logIn, googleLogin, githubLogin, } = useContext(AuthContext);
+ const location = useLocation()
+ const navigate = useNavigate();
 
   const handleSingIn = e => {
     e.preventDefault();
@@ -46,9 +47,13 @@ const SignIn = () => {
           icon: "success",
           title: "Signed in successfully"
         });
+
         form.email.value = '';
         form.password.value = '';
+        
 
+        navigate(location?.state ? location.state : '/')
+        
       })
       .catch((error) => {
         console.error(error);
@@ -58,28 +63,46 @@ const SignIn = () => {
         });
       });
 
-    // logIn(email, password)
-    //   .then(result => {
-    //     console.log(result);
-    //     Toast.fire({
-    //       icon: "success",
-    //       title: "Signed in successfully"
-    //     });
-    //     form.email.value = '';
-    //     form.password.value = '';
-    //   })
-    //   .catch(error => {
-    //     console.error(error);
-    //     Toast.fire({
-    //       icon: "error",
-    //       title: "Error Please try again."
-    //     });
-    //   })
-
-
+ 
   }
-
-
+ // google login
+  const handleGoogleLogin= () =>{
+    googleLogin()
+    .then(result =>{
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully"
+      });
+      setUser(result.user.providerData[0]);
+      navigate(location?.state ? location.state : "/")
+    })
+    .catch((error) =>{
+      console.error(error);
+      Toast.fire({
+        icon: "error",
+        title: "Error Please try again."
+      });
+    })
+  }
+  // github
+  const handleGithubLogin = () => {
+    githubLogin()
+    .then(result => {
+      Toast.fire({
+        icon: "success",
+        title: "Signed in successfully"
+      });
+      setUser(result.user.providerData[0]);
+      navigate(location?.state ? location.state : "/");
+    })
+    .catch((error) => {
+      console.error(error);
+      Toast.fire({
+        icon: "error",
+        title: "Error Please try again."
+      });
+    });
+  };
   return (
     <section className="h-screen md:mx-32">
       <div className="h-full">
@@ -135,8 +158,8 @@ const SignIn = () => {
             </form>
             <div className="flex gap-4 justify-center">
 
-              <button className="btn w-1/3 flex" onClick={googleLogin}> <FcGoogle /> Google </button>
-              <button className="btn flex w-1/3" onClick={githubLogin}> <FaGithub /> GitHub </button>
+              <button onClick={handleGoogleLogin} className="btn w-1/3 flex" > <FcGoogle /> Google </button>
+              <button className="btn flex w-1/3" onClick={handleGithubLogin}> <FaGithub /> GitHub </button>
             </div>
           </div>
         </div>
