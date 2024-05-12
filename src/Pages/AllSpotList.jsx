@@ -5,7 +5,7 @@ import SpotCard from "../components/SpotCard";
 
 const AllSpotList = () => {
 
-  const spotLists = useLoaderData();
+  const spotLists = useLoaderData()
 
 
   return (

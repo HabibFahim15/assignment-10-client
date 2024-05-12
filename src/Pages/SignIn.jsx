@@ -104,7 +104,7 @@ const SignIn = () => {
     });
   };
   return (
-    <section className="h-screen md:mx-32">
+    <section className="h-screen md:mb-0 mb-32 md:mx-32">
       <div className="h-full">
         {/* <!-- Left column container with background--> */}
         <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">

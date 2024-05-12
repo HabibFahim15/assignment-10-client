@@ -1,116 +1,69 @@
+import { Link, useLoaderData, useParams } from "react-router-dom";
 
 const ViewDetails = () => {
+  const cards = useLoaderData()
+  const { id } = useParams();
+  console.log(id);
+  const idInt = parseInt(id);
+  console.log(idInt);
+
+  console.log(cards);
+  const card = cards.find(card => card._id === id);
+  console.log(card);
+  if (!card) {
+    return (
+      <div className="justify-center">
+        <p>Sorry, the card you are looking for is not available.</p>
+        <button className="btn"><Link to={'/'}>Home</Link></button>
+
+      </div>
+    );
+  }
+
+  const { spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = card;
   return (
-  //   <div className="max-w-screen-lg mx-auto">
-  //   <main className="mt-10">
-
-  //     <div className="mb-4 md:mb-0 w-full mx-auto relative">
-  //       <div className="px-4 lg:px-0">
-  //         <h2 className="text-4xl font-semibold text-gray-800 leading-tight">
-  //           Pellentesque a consectetur velit, ac molestie ipsum. Donec sodales, massa et auctor.
-  //         </h2>
-  //         <a 
-  //           href="#"
-  //           className="py-2 text-green-700 inline-flex items-center justify-center mb-2"
-  //         >
-  //           Cryptocurrency
-  //         </a>
-  //       </div>
-
-  //       <img src="https://images.unsplash.com/photo-1587614387466-0a72ca909e16?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" className="w-full object-cover lg:rounded" style="height: 28em;"/>
-  //     </div>
-
-  //     <div className="flex flex-col lg:flex-row lg:space-x-12">
-
-  //       <div className="px-4 lg:px-0 mt-12 text-gray-700 text-lg leading-relaxed w-full lg:w-3/4">
-  //         <p className="pb-6">Advantage old had otherwise sincerity dependent additions. It in adapted natural hastily is
-  //           justice. Six draw
-  //           you him full not mean evil. Prepare garrets it expense windows shewing do an. She projection advantages
-  //           resolution son indulgence. Part sure on no long life am at ever. In songs above he as drawn to. Gay was
-  //           outlived peculiar rendered led six.</p>
-
-  //         <p className="pb-6">Difficulty on insensible reasonable in. From as went he they. Preference themselves me as
-  //           thoroughly
-  //           partiality considered on in estimating. Middletons acceptance discovered projecting so is so or. In or
-  //           attachment inquietude remarkably comparison at an. Is surrounded prosperous stimulated am me discretion
-  //           expression. But truth being state can she china widow. Occasional preference fat remarkably now projecting
-  //           uncommonly dissimilar. Sentiments projection particular companions interested do at my delightful. Listening
-  //           newspaper in advantage frankness to concluded unwilling.</p>
-
-  //         <p className="pb-6">Adieus except say barton put feebly favour him. Entreaties unpleasant sufficient few pianoforte
-  //           discovered
-  //           uncommonly ask. Morning cousins amongst in mr weather do neither. Warmth object matter course active law
-  //           spring six. Pursuit showing tedious unknown winding see had man add. And park eyes too more him. Simple excuse
-  //           active had son wholly coming number add. Though all excuse ladies rather regard assure yet. If feelings so
-  //           prospect no as raptures quitting.</p>
-
-  //         <div className="border-l-4 border-gray-500 pl-4 mb-6 italic rounded">
-  //           Sportsman do offending supported extremity breakfast by listening. Decisively advantages nor
-  //           expression
-  //           unpleasing she led met. Estate was tended ten boy nearer seemed. As so seeing latter he should thirty whence.
-  //           Steepest speaking up attended it as. Made neat an on be gave show snug tore.
-  //         </div>
-
-  //         <p className="pb-6">Exquisite cordially mr happiness of neglected distrusts. Boisterous impossible unaffected he me
-  //           everything.
-  //           Is fine loud deal an rent open give. Find upon and sent spot song son eyes. Do endeavor he differed carriage
-  //           is learning my graceful. Feel plan know is he like on pure. See burst found sir met think hopes are marry
-  //           among. Delightful remarkably new assistance saw literature mrs favourable.</p>
-
-  //         <h2 className="text-2xl text-gray-800 font-semibold mb-4 mt-4">Uneasy barton seeing remark happen his has</h2>
-
-  //         <p className="pb-6">Guest it he tears aware as. Make my no cold of need. He been past in by my hard. Warmly thrown
-  //           oh he common
-  //           future. Otherwise concealed favourite frankness on be at dashwoods defective at. Sympathize interested
-  //           simplicity at do projecting increasing terminated. As edward settle limits at in.</p>
-
-  //         <p className="pb-6">Dashwood contempt on mr unlocked resolved provided of of. Stanhill wondered it it welcomed oh.
-  //           Hundred no
-  //           prudent he however smiling at an offence. If earnestly extremity he he propriety something admitting convinced
-  //           ye. Pleasant in to although as if differed horrible. Mirth his quick its set front enjoy hoped had there. Who
-  //           connection imprudence middletons too but increasing celebrated principles joy. Herself too improve gay winding
-  //           ask expense are compact. New all paid few hard pure she.</p>
-
-  //         <p className="pb-6">Breakfast agreeable incommode departure it an. By ignorant at on wondered relation. Enough at
-  //           tastes really
-  //           so cousin am of. Extensive therefore supported by extremity of contented. Is pursuit compact demesne invited
-  //           elderly be. View him she roof tell her case has sigh. Moreover is possible he admitted sociable concerns. By
-  //           in cold no less been sent hard hill.</p>
-
-  //         <p className="pb-6">Detract yet delight written farther his general. If in so bred at dare rose lose good. Feel and
-  //           make two real
-  //           miss use easy. Celebrated delightful an especially increasing instrument am. Indulgence contrasted sufficient
-  //           to unpleasant in in insensible favourable. Latter remark hunted enough vulgar say man. Sitting hearted on it
-  //           without me.</p>
-
-  //       </div>
-
-  //       <div className="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm">
-  //         <div className="p-4 border-t border-b md:border md:rounded">
-  //           <div className="flex py-2">
-  //             <img src="https://randomuser.me/api/portraits/men/97.jpg"
-  //               className="h-10 w-10 rounded-full mr-2 object-cover" />
-  //             <div>
-  //               <p className="font-semibold text-gray-700 text-sm"> Mike Sullivan </p>
-  //               <p className="font-semibold text-gray-600 text-xs"> Editor </p>
-  //             </div>
-  //           </div>
-  //           <p className="text-gray-700 py-3">
-  //             Mike writes about technology
-  //             Yourself required no at thoughts delicate landlord it be. Branched dashwood do is whatever it.
-  //           </p>
-  //           <button className="px-2 py-1 text-gray-100 bg-green-700 flex w-full items-center justify-center rounded">
-  //             Follow 
-  //             <i className='bx bx-user-plus ml-2' ></i>
-  //           </button>
-  //         </div>
-  //       </div>
-
-  //     </div>
-  //   </main>
-  // </div>
-  <h1>hello this is card details</h1>
-  );
-};
+    <section className="text-gray-600 body-font">
+      <div className="container px-5 py-24 mx-auto flex flex-col">
+        <div className="lg:w-4/6 mx-auto">
+          <div className="rounded-lg  h- overflow-hidden">
+            <img alt="content" className="object-cover object-center h-full w-full" src={image} />
+          </div>
+          <div>
+             <h3 className="font-semibold">{location},{countryName}</h3>
+          </div>
+          <div className="flex flex-col sm:flex-row mt-10">
+            <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
+              <h1 className="text-xl font-semibold">Created By:</h1>
+              <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
+                
+                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-10 h-10" viewBox="0 0 24 24">
+                  <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+              </div>
+              <div className="flex flex-col items-center text-center justify-center">
+                <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">{name}</h2>
+                <div className="w-12 h-1 bg-indigo-500 rounded mt-2 mb-4"></div>
+                <p className="text-base">{email}</p>
+              </div>
+            </div>
+            <div className="sm:w-2/3 sm:pl-8 sm:py-8 sm:border-l border-gray-200 sm:border-t-0 border-t mt-4 pt-4 sm:mt-0 text-center sm:text-left">
+              <h1 className="text-3xl font-semibold ">{spotName}</h1>
+              <p className="leading-relaxed text-md mt-3 text-gray-400 mb-4">{shortDescription}</p>
+              <div className="flex mt-2 justify-between">
+                 <h3 className="font-semibold">Travel Time : <span>{travelTime}</span> </h3>
+                 <h3 className="font-semibold">Total Cost : <span>{averageCost}</span> </h3>
+              </div>
+              <div className="flex mt-2 justify-between">
+              <h3 className="font-semibold sm:text-xs">Best Time : <span>{seasonality}</span> </h3>
+              <h3 className="font-semibold">Total Visit : <span>{visitor} per year</span> </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
 
 export default ViewDetails;
