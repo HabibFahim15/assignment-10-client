@@ -1,9 +1,11 @@
 import { useLoaderData } from "react-router-dom";
 import SpotListCard from "../components/SpotListCard";
+import { useState } from "react";
 
 const MyList = () => {
 
-  const addedSpots = useLoaderData()
+  const allAddedSpots = useLoaderData();
+  const [addedSpots, setSpots] = useState(allAddedSpots);
 
   return (
     <div className="md:mx-20">
@@ -13,7 +15,7 @@ const MyList = () => {
 
         <div className="grid xl:grid-cols-2  gap-8">
         {
-          addedSpots.map(addedSpot => <SpotListCard key={addedSpot._id} addedSpot={addedSpot}></SpotListCard>)
+          addedSpots.map(addedSpot => <SpotListCard key={addedSpot._id} addedSpot={addedSpot} addedSpots={addedSpots} setSpots={setSpots}> </SpotListCard>)
         }
         </div>
 

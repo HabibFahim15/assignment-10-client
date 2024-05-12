@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
-const SpotListCard = ({addedSpot}) => {
+const SpotListCard = ({addedSpot, addedSpots, setSpots}) => {
 
-  const { _id,spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor,  name, image } = addedSpot;
+  const { _id,spotName, countryName, location,  averageCost, seasonality, travelTime, visitor,  name, image } = addedSpot;
 
   const handleDelete = _id =>{
       console.log(_id);
@@ -17,7 +17,6 @@ const SpotListCard = ({addedSpot}) => {
         confirmButtonText: "Yes, delete it!"
       }).then((result) => {
         if (result.isConfirmed) {
-           
           console.log('delete confirm');
           fetch(`http://localhost:5000/tourSpots/${_id}`, {
             method: 'DELETE'
@@ -31,6 +30,10 @@ const SpotListCard = ({addedSpot}) => {
              text: "This Spot has been deleted.",
              icon: "success"
            });
+          
+           const remaining = addedSpots.filter(spot => spot._id !== _id)
+           setSpots(remaining);
+           
             }
           })
         }
@@ -41,7 +44,7 @@ const SpotListCard = ({addedSpot}) => {
     <section className="text-gray-600 body-font">
       <div className="container md:px-5 md:py-24 mx-auto">
        
-        <div className="flex flex-wrap  border">
+        <div className="flex flex-wrap bg-gray-100  rounded-xl border">
           <div className="p-4 lg:w-full">
             <div className="h-full flex sm:flex-row flex-col items-center sm:justify-start justify-center text-center sm:text-left">
               <img alt="team" className="flex-shrink-0 rounded-lg  h-48 object-cover object-center sm:mb-0 mb-4" src={image} />
