@@ -52,6 +52,38 @@ const SignIn = () => {
           title: "Error Please try again."
         });
       })
+
+      googleLogin()
+        .then(result =>{
+          console.log(result);
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully"
+          });
+        })
+        .catch((error) => {
+          console.error(error);
+          Toast.fire({
+            icon: "error",
+            title: "Error Please try again."
+          });
+        });
+
+        githubLogin()
+        .then(result => {
+          console.log(result);
+          Toast.fire({
+            icon: "success",
+            title: "Signed in successfully"
+          });
+        })
+        .catch((error) =>{
+          console.error(error);
+          Toast.fire({
+            icon: "error",
+            title: "Error Please try again."
+          });
+        })
   }
 
 
@@ -68,19 +100,14 @@ const SignIn = () => {
             />
           </div>
 
-          {/* <!-- Right column container --> */}
           <div className="mb-12 md:mb-0 md:w-8/12 lg:w-5/12 xl:w-5/12">
+
             <form onSubmit={handleSingIn} className="card-body">
               <h1 className="text-center text-2xl md:text-4xl font-semibold md:font-bold">Sign In Now</h1>
               <hr />
-              <div>
-                <button onClick={handleGoogleLogin} className="btn md:w-40">
-                  <FcGoogle />Google
-                </button>
-                <button onClick={handleGithubLogin} className="btn md:w-40">
-                  <FaGithub />Github
-                </button>
-              </div>
+              <button  onClick={googleLogin}> <FcGoogle /> </button>
+              <button  onClick={githubLogin}> <FaGithub /> </button>
+             
 
               <div className="form-control">
                 <label className="label">
@@ -111,10 +138,7 @@ const SignIn = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              {/* <div className="flex ">
-        <p>Already have account</p>
-        <Link><a className="link link-secondary">Sign In Now</a></Link>
-        </div> */}
+              
               <p>Already have account <Link to={'/signIn'}><a className="link link-error">Sign In Now</a></Link></p>
             </form>
           </div>
