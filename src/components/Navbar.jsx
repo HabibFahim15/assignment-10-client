@@ -1,8 +1,10 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false)
+
   const { user, logOut } = useContext(AuthContext);
   console.log(user);
 
@@ -21,6 +23,7 @@ const Navbar = () => {
     email = user.email || "";
     photoURL = user.photoURL || "";
   }
+
   return (
     <div>
       <div className="navbar bg-base-100">
@@ -44,34 +47,34 @@ const Navbar = () => {
             <li><Link to={'/touristSpot'}> All Tourists Spot</Link></li>
             <li><Link to={'/addTouristSpot'}>Add Tourists Spot</Link></li>
             <li><Link to={'/myList'}>My List</Link></li>
-
           </ul>
         </div>
         <div className="navbar-end flex md:gap-2 ">
           <div className="avatar flex gap-1 md:gap-3">
-            {
-              user && (
-                <div className="md:w-16 w-10 rounded-full">
-                  <img src={photoURL} alt="User Avtar" />
+            {user && (
+              <div>
+                <div className="md:w-20 w-12 h-12 md:h-20">
+                <img className="rounded-full " onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} src={photoURL} alt="User Avtar" />
                 </div>
-              )}
+                {open && (
+                  <div onMouseEnter={() => setOpen(true)} onMouseLeave={() => setOpen(false)} className="absolute top-10 right-1 w-72 h-36 bg-white border border-gray-400 p-4 rounded-2xl">
+                    <ul className="gap-1 font-semibold grid grid-cols">
+                      <li className=" flex justify-between">Name: {displayName}</li>
+                      <li className=" flex justify-between">Email:  {email}</li>
+                      <li onClick={handleLogOut} className="btn flex">LogOut</li>
+                    </ul>
+                  </div>
+                )}
+              </div>
+            )}
+            
           </div>
-          {user && (
-          <div className="grid md:text-lg hidden md:flex md:flex-col">
-          <h1 className="font-semibold">Name: {displayName}</h1>
-          <h1 className="font-semibold">Email: {email}</h1>
-        </div>
-        )}
-        {user ? (
-          <button onClick={handleLogOut} className="btn md:w-24 w-14">
-            Logout
-          </button>
-        ) : (
-          <div>
-            <Link to={'/signUp'} className="btn text-white hover:text-black bg-[#1A56DB]">Sign Up</Link>
-    <Link to={'/signIn'} className="btn bg-[#10B981] text-white hover:text-black">Sign In</Link>
-          </div>
-        )}
+          {!user && (
+              <div>
+                <Link to={'/signUp'} className="btn text-white hover:text-black bg-[#1A56DB]">Sign Up</Link>
+                <Link to={'/signIn'} className="btn bg-[#10B981] text-white hover:text-black">Sign In</Link>
+              </div>
+            )}
         </div>
       </div>
     </div>
