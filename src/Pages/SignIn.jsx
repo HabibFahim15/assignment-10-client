@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { IoIosEye, IoIosEyeOff } from "react-icons/io";
 import { Link } from "react-router-dom";
-import { FcGoogle   } from "react-icons/fc";
+import { FcGoogle } from "react-icons/fc";
 import { FaGithub } from "react-icons/fa";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
@@ -20,7 +20,7 @@ const Toast = Swal.mixin({
 });
 
 const SignIn = () => {
-  const { showPassword, setShowPassword, logIn, googleLogin, githubLogin, } = useContext(AuthContext);
+  const { showPassword, setShowPassword,  logIn, googleLogin, githubLogin, } = useContext(AuthContext);
 
 
   const handleSingIn = e => {
@@ -38,52 +38,45 @@ const SignIn = () => {
     }
 
     logIn(email, password)
-      .then(result => {
+      .then((result) => {
         console.log(result);
+        // setUser(result._UserImpl.providerData[0]);
+        // Navigate(location?.state ? location.state : "/");
         Toast.fire({
           icon: "success",
           title: "Signed in successfully"
         });
+        form.email.value = '';
+        form.password.value = '';
+
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
         Toast.fire({
           icon: "error",
           title: "Error Please try again."
         });
-      })
+      });
 
-      googleLogin()
-        .then(result =>{
-          console.log(result);
-          Toast.fire({
-            icon: "success",
-            title: "Signed in successfully"
-          });
-        })
-        .catch((error) => {
-          console.error(error);
-          Toast.fire({
-            icon: "error",
-            title: "Error Please try again."
-          });
-        });
+    // logIn(email, password)
+    //   .then(result => {
+    //     console.log(result);
+    //     Toast.fire({
+    //       icon: "success",
+    //       title: "Signed in successfully"
+    //     });
+    //     form.email.value = '';
+    //     form.password.value = '';
+    //   })
+    //   .catch(error => {
+    //     console.error(error);
+    //     Toast.fire({
+    //       icon: "error",
+    //       title: "Error Please try again."
+    //     });
+    //   })
 
-        githubLogin()
-        .then(result => {
-          console.log(result);
-          Toast.fire({
-            icon: "success",
-            title: "Signed in successfully"
-          });
-        })
-        .catch((error) =>{
-          console.error(error);
-          Toast.fire({
-            icon: "error",
-            title: "Error Please try again."
-          });
-        })
+
   }
 
 
@@ -105,9 +98,8 @@ const SignIn = () => {
             <form onSubmit={handleSingIn} className="card-body">
               <h1 className="text-center text-2xl md:text-4xl font-semibold md:font-bold">Sign In Now</h1>
               <hr />
-              <button  onClick={googleLogin}> <FcGoogle /> </button>
-              <button  onClick={githubLogin}> <FaGithub /> </button>
-             
+
+
 
               <div className="form-control">
                 <label className="label">
@@ -138,9 +130,14 @@ const SignIn = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Login</button>
               </div>
-              
-              <p>Already have account <Link to={'/signIn'}><a className="link link-error">Sign In Now</a></Link></p>
+
+              <p>Already have account <Link to={'/signUp'}><a className="link link-error">Sign Up Now</a></Link></p>
             </form>
+            <div className="flex gap-4 justify-center">
+
+              <button className="btn w-1/3 flex" onClick={googleLogin}> <FcGoogle /> Google </button>
+              <button className="btn flex w-1/3" onClick={githubLogin}> <FaGithub /> GitHub </button>
+            </div>
           </div>
         </div>
       </div>

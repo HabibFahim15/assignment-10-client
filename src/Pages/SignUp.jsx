@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from 'sweetalert2'
@@ -19,10 +19,24 @@ const Toast = Swal.mixin({
 const SignUp = () => {
 
   const { createUser, showPassword, setShowPassword } = useContext(AuthContext);
+  const [registerError, setRegisterError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [success, setSuccess] = useState('');
 
-  const handleSingUp = e => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (registerError) setRegisterError('');
+      if (passwordError) setPasswordError('');
+      if (success) setSuccess('');
+    }, 5000);
+    return () => clearTimeout(timer);
+  }, [registerError, passwordError, success]);
+
+  const handleSingUp = async(e) => {
     e.preventDefault();
     const form = e.target;
+    const name = form.name.value;
+    const image = form.image.value;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
@@ -34,21 +48,13 @@ const SignUp = () => {
       return
     }
 
-    createUser(email, password)
-      .then(result => {
-        console.log(result);
-        Toast.fire({
-          icon: "success",
-          title: "Account Created successfully"
-        });
-      })
-      .catch(error => {
-        console.error(error);
-        Toast.fire({
-          icon: "error",
-          title: "This gmail already have account"
-        });
-      })
+    try {
+      await createUser(name,image,email, password);
+      setSuccess('Account created successfully');
+    } catch (error) {
+      setRegisterError(error.message);
+    }
+    
   }
 
 
@@ -71,6 +77,18 @@ const SignUp = () => {
             <form onSubmit={handleSingUp} className="card-body">
               <h1 className="text-center text-2xl md:text-4xl font-semibold md:font-bold">Sign Up Now</h1>
 
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Enter Your Name</span>
+                </label>
+                <input type="text" name="name" placeholder="Name" className="input input-bordered" required />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Image URL</span>
+                </label>
+                <input type="text" name="image" placeholder="image url" className="input input-bordered" required />
+              </div>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Enter Your Email</span>
