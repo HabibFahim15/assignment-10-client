@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const SpotListCard = ({addedSpot}) => {
@@ -56,7 +57,7 @@ const SpotListCard = ({addedSpot}) => {
                  </div>
                  <div className="grid grid-cols-1 gap-4">
                  <button className="btn btn-info text-white">Info</button>
-                 <button className="btn btn-warning text-white">Edit</button>
+                 <Link to={`/updateTour/${_id}`} className="btn btn-warning text-white">Edit</Link>
                       <button
                       onClick={() => handleDelete(_id)}
                       className="btn btn-error text-white">Delete</button>

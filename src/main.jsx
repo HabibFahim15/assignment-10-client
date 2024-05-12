@@ -15,6 +15,7 @@ import AllSpotList from './Pages/AllSpotList.jsx';
 import MyList from './Pages/MyList.jsx';
 import AuthProvider from './Providers/AuthProvider.jsx';
 import UpdateAdd from './Pages/UpdateAdd.jsx';
+// import ViewDetails from './Pages/ViewDetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -38,9 +39,15 @@ const router = createBrowserRouter([
         path: 'addTouristSpot',
         element: <AddTouristSpot></AddTouristSpot>
       },
+      // {
+      //   path: 'tourSpotDetails/:id',
+      //   element: <ViewDetails></ViewDetails>,
+      //   loader: ({params}) => fetch(`http://localhost:5000/tourSpots/${params.id}`)
+      // },
       {
-        path: 'updateTour',
-        element: <UpdateAdd></UpdateAdd>
+        path: 'updateTour/:id',
+        element: <UpdateAdd></UpdateAdd>,
+        loader: ({params}) => fetch(`http://localhost:5000/tourSpots/${params.id}`)
       },
       {
         path: 'touristSpot',
