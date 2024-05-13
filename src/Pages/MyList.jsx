@@ -1,14 +1,27 @@
-import { useLoaderData } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 import SpotListCard from "../components/SpotListCard";
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const MyList = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user);
 
-  const allAddedSpots = useLoaderData();
-  const [addedSpots, setSpots] = useState(allAddedSpots);
+   const [addedSpots, setSpots] = useState([]);
+  useEffect(() =>{
+    fetch(`http://localhost:5000/tourSpots/${user?.email}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setSpots(data);
+    })
+  },[user])
+
+  // const allAddedSpots = useLoaderData();
+  
 
   return (
-    <div className="md:mx-20">
+    <div className="bg-gray-200">
+      <div className="md:mx-20">
        <div className="flex flex-col text-center w-full mb-20">
           <h1 className="text-4xl font-medium title-font mb-2 text-gray-900">Total spot added : {addedSpots.length}</h1>
         </div>
@@ -21,6 +34,8 @@ const MyList = () => {
 
       
     </div>
+    </div>
+    
   );
 };
 

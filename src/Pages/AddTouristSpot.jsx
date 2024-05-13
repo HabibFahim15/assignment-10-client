@@ -1,5 +1,12 @@
+import { useContext } from 'react';
 import Swal from 'sweetalert2'
+import { AuthContext } from '../Providers/AuthProvider';
 const AddTouristSpot = () => {
+
+
+  const { user  } = useContext(AuthContext);
+  console.log(user.email);
+
 
 const handleAddSpot = e => {
   e.preventDefault();
@@ -94,11 +101,11 @@ const handleAddSpot = e => {
       </div>
       <div>
         <label  className="mb-2 inline-block text-sm text-gray-800 sm:text-base">User Email</label>
-        <input name="email" required className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+        <input name="email" defaultValue={user.email} disabled  required className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
       <div>
         <label  className="mb-2 inline-block text-sm text-gray-800 sm:text-base">User Name</label>
-        <input name="name" required className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
+        <input name="name" defaultValue={user.displayName} disabled required className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
       <div className="col-span-2">
         <label  className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Image*</label>

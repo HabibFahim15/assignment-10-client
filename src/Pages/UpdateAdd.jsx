@@ -1,10 +1,26 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const UpdateAdd = () => {
 
-  const tourSpot = useLoaderData();
-  const {_id,spotName, countryName,location,shortDescription,averageCost,seasonality,travelTime,visitor,email,name,image} = tourSpot;
+  const tourSpots = useLoaderData();
+  const { id } = useParams();
+  const idInt = parseInt(id);
+  console.log(idInt);
+  console.log(tourSpots);
+  const update = tourSpots.find(tourSpot => tourSpot._id === id);
+  console.log(update);
+  if (!update) {
+    return (
+      <div className="justify-center">
+        <p>Sorry, the card you are looking for is not available.</p>
+        <button className="btn"><Link to={'/'}>Home</Link></button>
+
+      </div>
+    );
+  }
+
+  const {_id,spotName, countryName,location,shortDescription,averageCost,seasonality,travelTime,visitor,email,name,image} = update;
 
   const handleUpdateSpot = e => {
     e.preventDefault();

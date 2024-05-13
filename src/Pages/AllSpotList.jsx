@@ -10,7 +10,7 @@ const AllSpotList = () => {
 
   return (
      <div className="md:m-20">
-      <h1 className="my-12 text-center text-4xl font-semibold">Total Tour Spot: {spotLists.length} </h1>
+      <h1 className="my-12 text-center text-gray-600 text-4xl font-semibold">Available Tour Spot : {spotLists.length} </h1>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
       {

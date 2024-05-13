@@ -47,10 +47,19 @@ const SignUp = () => {
       });
       return
     }
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z]).+$/;
+    if (!passwordRegex.test(password)) {
+      Toast.fire({
+        icon: "error",
+        title: "Password must be at least 1 Uppercase and 1 Lowercase"
+      });
+      return
+    }
 
     try {
       await createUser(name,image,email, password);
       setSuccess('Account created successfully');
+      
     } catch (error) {
       setRegisterError(error.message);
     }

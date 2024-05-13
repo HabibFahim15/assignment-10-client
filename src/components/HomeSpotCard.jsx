@@ -3,16 +3,17 @@ import { TbCoinTakaFilled } from "react-icons/tb";
 import { MdCoPresent,MdOutlineEmail  } from "react-icons/md";
 import { FaUserAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Fade } from "react-awesome-reveal";
 
-const SpotCard = ({ spotList }) => {
 
-  const { _id,spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = spotList;
-
+const HomeSpotCard = ({card}) => {
+console.log(card);
+const { _id,spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = card;
   return (
     <div className="max-w-lg p-4 shadow-md bg-gray-50 text-gray-800 flex flex-col justify-between h-full">
   <div className="space-y-4">
     <div className="space-y-2">
-      <img src={image} alt="" className="block object-cover object-center w-full rounded-md h-72 bg-gray-500" />
+      <img src={image} alt="" className="block object-cover transition-all duration-300 hover:scale-105 object-center w-full rounded-md h-72 bg-gray-500" />
       <div className="flex items-center justify-between text-xs">
         <span className="text-base font-semibold">{countryName}</span>
       </div>
@@ -46,9 +47,9 @@ const SpotCard = ({ spotList }) => {
       </div>
     </div>
   </div>
-  <Link to={`/touristSpot/${_id}`} className="btn bg-purple-500 text-white font-semibold w-full mt-auto">View Details</Link>
+  <Link to={`/touristSpot/${_id}`} className="btn bg-indigo-400 text-white font-semibold w-full mt-auto">View Details</Link>
 </div>
   );
 };
 
-export default SpotCard;
+export default HomeSpotCard;
