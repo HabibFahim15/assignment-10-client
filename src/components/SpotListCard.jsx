@@ -18,7 +18,27 @@ const SpotListCard = ({addedSpot, addedSpots, setSpots}) => {
       }).then((result) => {
         if (result.isConfirmed) {
           console.log('delete confirm');
+
+
           fetch(`https://assingment-10-server-seven.vercel.app/tourSpots/${_id}`, {
+            method: 'DELETE'
+          })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+            if(data.deletedCount > 0){
+              Swal.fire({
+             title: "Deleted!",
+             text: "This Spot has been deleted.",
+             icon: "success"
+           });
+          
+           const remaining = addedSpots.filter(spot => spot._id !== _id)
+           setSpots(remaining);
+           
+            }
+          })
+          fetch(`http://localhost:5000/secondTourSpots/${_id}`, {
             method: 'DELETE'
           })
           .then(res => res.json())

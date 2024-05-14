@@ -17,6 +17,7 @@ import AuthProvider from './Providers/AuthProvider.jsx';
 import UpdateAdd from './Pages/UpdateAdd.jsx';
 import ViewDetails from './Pages/ViewDetails.jsx';
 import PrivateRoute from './routes/PrivateRoute.jsx';
+import CountryCard from './Pages/CountryCard.jsx';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
         path: '/touristSpot/:id',
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
         loader: () => fetch('https://assingment-10-server-seven.vercel.app/tourSpots/')
+      },
+      {
+        path: '/:countryName',
+        element: <PrivateRoute><CountryCard></CountryCard></PrivateRoute>,
+        loader: () => fetch('http://localhost:5000/tourSpots/')
       },
       {
         path: 'updateTour/:id',

@@ -1,20 +1,21 @@
-import { HiLocationMarker } from "react-icons/hi";
-import { TbCoinTakaFilled } from "react-icons/tb";
-import { MdCoPresent,MdOutlineEmail  } from "react-icons/md";
+import { Fade } from "react-awesome-reveal";
 import { FaUserAlt } from "react-icons/fa";
+import { HiLocationMarker } from "react-icons/hi";
+import { MdCoPresent, MdOutlineEmail } from "react-icons/md";
+import { TbCoinTakaFilled } from "react-icons/tb";
 import { Link } from "react-router-dom";
 
 
-const HomeSpotCard = ({card}) => {
-const { _id,spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = card;
+const CountryGroupedCard = ({card}) => {
+  const { spotName, _id, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = card;
   return (
-    <div className="max-w-lg p-4 shadow-md bg-gray-50 text-gray-800 flex flex-col justify-between h-full">
+    <Fade direction="up">
+    <div className="max-w-lg p-4 shadow-md bg-green-50 text-gray-800 flex flex-col justify-between h-full">
   <div className="space-y-4">
+ 
     <div className="space-y-2">
       <img src={image} alt="" className="block object-cover transition-all duration-300 hover:scale-105 object-center w-full rounded-md h-72 bg-gray-500" />
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-base font-semibold">{countryName}</span>
-      </div>
+      
     </div>
     <div className="space-y-2">
       <a rel="noopener noreferrer" href="#" className="block">
@@ -45,9 +46,10 @@ const { _id,spotName, countryName, location, shortDescription, averageCost, seas
       </div>
     </div>
   </div>
-  <Link to={`/touristSpot/${_id}`} className="btn bg-indigo-400 text-white font-semibold w-full mt-auto">View Details</Link>
+  <Link to={`/touristSpot/${_id}`} className="btn bg-indigo-400 text-white font-semibold w-full mt-auto"> View Details </Link>
 </div>
+  </Fade>
   );
 };
 
-export default HomeSpotCard;
+export default CountryGroupedCard;
