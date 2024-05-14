@@ -9,7 +9,7 @@ const MyList = () => {
 
    const [addedSpots, setSpots] = useState([]);
   useEffect(() =>{
-    fetch(`http://localhost:5000/tourSpots/${user?.email}`)
+    fetch(`https://assingment-10-server-seven.vercel.app/tourSpots/${user?.email}`)
     .then((res) => res.json())
     .then((data) => {
       setSpots(data);

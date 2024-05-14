@@ -5,6 +5,7 @@ import Carousel from "../components/Carousel";
 import LatestNews from "../components/LatestNews";
 import MiddleSection from "../components/MiddleSection";
 import HomeSpotCard from "../components/HomeSpotCard";
+import StepGuide from "../components/StepGuide";
 
 const Home = () => {
   const cards = useLoaderData();
@@ -33,6 +34,7 @@ const Home = () => {
 
       <MiddleSection />
       <Carousel />
+      <StepGuide></StepGuide>
     </div>
   );
 };

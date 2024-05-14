@@ -25,9 +25,9 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path:'/',
+        path: '/',
         element: <Home></Home>,
-        loader: () => fetch('http://localhost:5000/tourSpots/')
+        loader: () => fetch('https://assingment-10-server-seven.vercel.app/tourSpots/')
       },
       {
         path: '/signUp',
@@ -44,24 +44,24 @@ const router = createBrowserRouter([
       {
         path: '/touristSpot/:id',
         element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/tourSpots/')
+        loader: () => fetch('https://assingment-10-server-seven.vercel.app/tourSpots/')
       },
       {
         path: 'updateTour/:id',
         element: <UpdateAdd></UpdateAdd>,
-        loader: () => fetch('http://localhost:5000/tourSpots/')
+        loader: () => fetch('https://assingment-10-server-seven.vercel.app/tourSpots/')
       },
       {
         path: 'touristSpot',
-        element:<AllSpotList></AllSpotList>,
-        loader: () => fetch('http://localhost:5000/tourSpots')
+        element: <AllSpotList></AllSpotList>,
+        loader: () => fetch('https://assingment-10-server-seven.vercel.app/tourSpots')
       },
       {
         path: 'myList',
         element:<PrivateRoute> <MyList></MyList></PrivateRoute>
         
       }
-      
+
     ]
   },
 ]);
@@ -69,7 +69,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
+      <RouterProvider router={router} />
     </AuthProvider>
   </React.StrictMode>,
 )

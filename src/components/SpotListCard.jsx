@@ -18,7 +18,7 @@ const SpotListCard = ({addedSpot, addedSpots, setSpots}) => {
       }).then((result) => {
         if (result.isConfirmed) {
           console.log('delete confirm');
-          fetch(`http://localhost:5000/tourSpots/${_id}`, {
+          fetch(`https://assingment-10-server-seven.vercel.app/tourSpots/${_id}`, {
             method: 'DELETE'
           })
           .then(res => res.json())

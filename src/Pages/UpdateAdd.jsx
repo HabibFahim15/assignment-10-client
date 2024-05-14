@@ -20,7 +20,7 @@ const UpdateAdd = () => {
     );
   }
 
-  const {_id,spotName, countryName,location,shortDescription,averageCost,seasonality,travelTime,visitor,email,name,image} = update;
+  const {_id,spotName, countryName,location,shortDescription,averageCost,seasonality,travelTime,visitor,image} = update;
 
   const handleUpdateSpot = e => {
     e.preventDefault();
@@ -33,20 +33,19 @@ const UpdateAdd = () => {
     const seasonality = form.seasonality.value;
     const travelTime = form.travelTime.value;
     const visitor = form.visitor.value;
-    const email = form.email.value;
-    const name = form.name.value;
     const image = form.image.value;
     
-    const updateSpot ={spotName, countryName,location,shortDescription,averageCost,seasonality,travelTime,visitor,email,name,image}
+    const updateSpot ={_id,spotName, countryName,location,shortDescription,averageCost,seasonality,travelTime,visitor,image}
 
 
-    fetch(`http://localhost:5000/tourSpots/${_id}`,{
+    fetch(`https://assingment-10-server-seven.vercel.app/tourSpots/${_id}`,{
     method: 'PUT',
     headers: {
       'content-type' : 'application/json'
     },
     body: JSON.stringify(updateSpot)
   })
+  
   .then(res => res.json())
   .then(data =>{
     console.log(data);
@@ -110,14 +109,7 @@ const UpdateAdd = () => {
         <label  className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Total Visitor/Year</label>
         <input name="visitor" defaultValue={visitor} required className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
       </div>
-      <div>
-        <label  className="mb-2 inline-block text-sm text-gray-800 sm:text-base">User Email</label>
-        <input name="email" defaultValue={email} required className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-      </div>
-      <div>
-        <label  className="mb-2 inline-block text-sm text-gray-800 sm:text-base">User Name</label>
-        <input name="name" defaultValue={name} required className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />
-      </div>
+      
       <div className="col-span-2">
         <label  className="mb-2 inline-block text-sm text-gray-800 sm:text-base">Image*</label>
         <input name="image" required defaultValue={image} className="w-full rounded border bg-gray-50 px-3 py-2 text-gray-800 outline-none ring-indigo-300 transition duration-100 focus:ring" />

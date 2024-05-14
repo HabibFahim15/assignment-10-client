@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from 'sweetalert2'
@@ -19,18 +19,9 @@ const Toast = Swal.mixin({
 const SignUp = () => {
 
   const { createUser, showPassword, setShowPassword } = useContext(AuthContext);
-  const [registerError, setRegisterError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [success, setSuccess] = useState('');
+  
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      if (registerError) setRegisterError('');
-      if (passwordError) setPasswordError('');
-      if (success) setSuccess('');
-    }, 5000);
-    return () => clearTimeout(timer);
-  }, [registerError, passwordError, success]);
+  
 
   const handleSingUp = async(e) => {
     e.preventDefault();
@@ -58,10 +49,21 @@ const SignUp = () => {
 
     try {
       await createUser(name,image,email, password);
-      setSuccess('Account created successfully');
+      Toast.fire({
+        icon: "success",
+        title: "Account created successfully"
+      });
+
+      form.email.value = '';
+      form.password.value = '';
+      form.name.value = '';
+      form.image.value = '';
       
     } catch (error) {
-      setRegisterError(error.message);
+      Toast.fire({
+        icon: "error",
+        title: "Error try again"
+      });
     }
     
   }
