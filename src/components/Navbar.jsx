@@ -35,17 +35,20 @@ const Navbar = () => {
               <li><Link to={'/'}>Home</Link></li>
               <li><Link to={'/touristSpot'}>All Tourists Spot</Link></li>
               <li><Link to={'/addTouristSpot'}>Add Tourists Spot</Link></li>
+              <li><Link to={'/countryBased'}>Country Based</Link></li>
               <li><Link to={'/myList'}>My List</Link></li>
             </ul>
           </div>
-          <Link to={'/'} className="btn btn-ghost md:text-5xl font-semibold"><span className="text-gray-900">Tour</span><span className="text-orange-500">Asia</span> </Link>
+          <Link to={'/'} className="btn btn-ghost md:text-5xl text-3xl font-semibold"><span className="text-gray-900">Tour</span><span className="text-orange-500">Asia</span> </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 font-normal md:text-base">
             <li><Link to={'/'}>Home</Link></li>
             <li><Link to={'/touristSpot'}>All Tourists Spot</Link></li>
             <li><Link to={'/addTouristSpot'}>Add Tourists Spot</Link></li>
+            <li><Link to={'/countryBased'}>Country Based</Link></li>
             <li><Link to={'/myList'}>My List</Link></li>
+            
           </ul>
         </div>
         <div className="navbar-end flex md:gap-2 ">

@@ -13,7 +13,7 @@ const CountryCard = () => {
 
   return (
     <div>
-      <h1 className="md:text-6xl text-3xl md:p-4 py-5 text-center font-sans text-green-500 font-bold">Country Category</h1>
+      <h1 className="md:text-6xl text-3xl md:p-4 py-5 text-center font-sans text-green-500 font-bold">All of {countryName}</h1>
       <div className="grid  md:p-8 align-middle justify-center items-center md:grid-cols-2 lg:grid-cols-3 gap-4">
         
       {
