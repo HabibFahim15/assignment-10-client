@@ -57,7 +57,7 @@ const router = createBrowserRouter([
       {
         path: '/:countryName',
         element: <PrivateRoute><CountryCard></CountryCard></PrivateRoute>,
-        loader: () => fetch('http://localhost:5000/tourSpots/')
+        loader: () => fetch('https://assingment-10-server-seven.vercel.app/tourSpots/')
       },
       {
         path: 'updateTour/:id',
@@ -71,8 +71,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'myList',
-        element:<PrivateRoute> <MyList></MyList></PrivateRoute>
-        
+        element: <PrivateRoute> <MyList></MyList></PrivateRoute>
+
       }
 
     ]

@@ -44,7 +44,7 @@ const AddTouristSpot = () => {
           })
         }
       })
-    fetch('http://localhost:5000/secondTourSpots', {
+    fetch('https://assingment-10-server-seven.vercel.app/secondTourSpots', {
       method: 'POST',
       headers: {
         'content-type': 'application/json'
