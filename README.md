@@ -1,19 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-
-
-----------------------------------
-
-
-
-
 * The I selected the first category which name Southeast Asia and my website name is TourAsia.
 * Live-Links:https://assingment-10-a996f.web.app/
 
@@ -25,4 +9,7 @@ Currently, two official plugins are available:
 * We have user can add any tour card.
 * We have user can update his created card.
 * we have to Login otherwise some route cannot accessed.
-* 
+---------------After 5 Month------------ 
+* 06/10/2024- All tour spot page are updated by implementing the search bar...
+* The search bar will be searched by "Name, CountryName, Location"
+*  

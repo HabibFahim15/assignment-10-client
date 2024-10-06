@@ -1,4 +1,4 @@
-import { Fade } from "react-awesome-reveal";
+
 import { FaUserAlt } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdCoPresent, MdOutlineEmail } from "react-icons/md";
@@ -8,10 +8,9 @@ import { Link } from "react-router-dom";
 
 const CountryBaseCard = ({card}) => {
   console.log(card);
-  const { _id,spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = card;
+  const { spotName, countryName, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = card;
   return (
-    <Fade direction="up">
-      <div className="max-w-lg p-4 shadow-md bg-green-50 text-gray-800 flex flex-col justify-between h-full">
+    <div className="max-w-lg p-4 shadow-md bg-green-50 text-gray-800 flex flex-col justify-between h-full">
     <div className="space-y-4">
     <div className="flex items-center justify-center ">
           <span className="text-3xl font-semibold">{countryName}</span>
@@ -51,7 +50,6 @@ const CountryBaseCard = ({card}) => {
     </div>
     <Link to={`/${countryName}`} className="btn bg-indigo-400 text-white font-semibold w-full mt-auto">All of {countryName} </Link>
   </div>
-    </Fade>
   );
 };
 

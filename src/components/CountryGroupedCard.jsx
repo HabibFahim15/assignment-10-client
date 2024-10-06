@@ -1,4 +1,4 @@
-import { Fade } from "react-awesome-reveal";
+
 import { FaUserAlt } from "react-icons/fa";
 import { HiLocationMarker } from "react-icons/hi";
 import { MdCoPresent, MdOutlineEmail } from "react-icons/md";
@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 const CountryGroupedCard = ({card}) => {
   const { spotName, _id, location, shortDescription, averageCost, seasonality, travelTime, visitor, email, name, image } = card;
   return (
-    <Fade direction="up">
     <div className="max-w-lg p-4 shadow-md bg-green-50 text-gray-800 flex flex-col justify-between h-full">
   <div className="space-y-4">
  
@@ -48,7 +47,6 @@ const CountryGroupedCard = ({card}) => {
   </div>
   <Link to={`/touristSpot/${_id}`} className="btn bg-indigo-400 text-white font-semibold w-full mt-auto"> View Details </Link>
 </div>
-  </Fade>
   );
 };
 

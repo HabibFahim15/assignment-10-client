@@ -4,7 +4,7 @@ import { Typewriter } from "react-simple-typewriter";
 
 const Banner = () => {
   return (
-    <div className="bg-white pb-6 sm:pb-8 lg:pb-12">
+    <div className=" pb-6 sm:pb-8 lg:pb-12">
       <div className="mx-auto max-w-screen ">
         <section className="min-h-96 relative flex flex-1 shrink-0 items-center justify-center overflow-hidden rounded-lg bg-gray-100 py-16 shadow-lg md:py-20 xl:py-48">
           {/* image - start */}

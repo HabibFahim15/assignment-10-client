@@ -46,7 +46,7 @@ const Home = () => {
       <Banner />
 
       <div>
-        <h1 className="md:text-6xl text-3xl md:p-4 py-5 text-center font-sans text-purple-600 font-semibold">Our Tour Section</h1>
+        <h1 className="md:text-6xl text-3xl md:p-4 py-5 text-center font-sans  font-semibold">Our Tour Section</h1>
         <div className="grid  md:p-8 align-middle justify-center items-center md:grid-cols-2 lg:grid-cols-3 gap-4">
           {firstSixCards.map((card, index) => (
             <HomeSpotCard key={index} card={card} />

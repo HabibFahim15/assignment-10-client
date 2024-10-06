@@ -35,8 +35,8 @@ const CountryBaseAllcard = () => {
   console.log(uniqueArray);
   return (
     <div>
-      <h1 className="md:text-6xl text-2xl md:p-4 py-5 text-center font-sans text-green-400 font-bold">All Country Category</h1>
-      <h1 className="md:text-2xl text-xl md:p-4 py-5 text-center font-sans text-gray-400 font-bold">Total: {uniqueArray.length} Countries</h1>
+      <h1 className="md:text-6xl text-2xl md:p-4 py-5 text-center font-sans text-green-700 font-bold">All Country Category</h1>
+      <h1 className="md:text-2xl text-xl md:p-4 py-5 text-center font-sans text-gray-400 font-bold">We Have: {uniqueArray.length} Countries Location</h1>
       <div className="grid  md:p-8 align-middle justify-center items-center md:grid-cols-2 lg:grid-cols-3 gap-4">
 
         {
