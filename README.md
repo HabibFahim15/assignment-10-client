@@ -9,7 +9,7 @@
 * We have user can add any tour card.
 * We have user can update his created card.
 * we have to Login otherwise some route cannot accessed.
----------------After 5 Month------------ 
+* ---------------After 5 Month------------ 
 * 06/10/2024- All tour spot page are updated by implementing the search bar...
-* The search bar will be searched by "Name, CountryName, Location"
-*  
+* The search bar will be searched by ----> "Name, CountryName, Location"
+  
